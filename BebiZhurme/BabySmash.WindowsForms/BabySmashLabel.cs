@@ -13,25 +13,24 @@ namespace BabySmash.WindowsForms
         {
             InitializeComponent();
 
-            _timer = new Timer();
+            _timer = new Timer
+            {
+                Interval = 9000 // 2 sekonda
+            };
 
-            _timer.Interval = 2000; // 2 sekonda
             _timer.Start();
 
-            _timer.Tick += timer_Tick;
+            _timer.Tick += TimerTick;
+
         }
 
-        private void timer_Tick(object sender, System.EventArgs e)
+
+        private void TimerTick(object sender, System.EventArgs e)
         {
 
             this.Visible = false;
             _timer.Stop();
             this.Dispose();
-        }
-
-        protected override void OnPaint(PaintEventArgs pe)
-        {
-            base.OnPaint(pe);
         }
 
         protected override void OnCreateControl()
@@ -41,7 +40,11 @@ namespace BabySmash.WindowsForms
             this.BackColor = Color.Transparent;
             this.AutoSize = true;
             this.BringToFront();
-            //this.SetStyle(ControlStyles.Opaque, true);
         }
+
+        //protected override void OnPaint(PaintEventArgs pe)
+        //{
+        //    Debug.WriteLine("U therrit ??");
+        //}
     }
 }
